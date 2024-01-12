@@ -1,2 +1,7 @@
 _subdirectory: template
 _templates_suffix: .copier-jinja
+
+# Questions
+image_namespace:
+  type: str
+  help: What is your image namespace? (e.g. your registry username)

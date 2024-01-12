@@ -9,3 +9,11 @@ full_name:Copier Test
 
 create_catalogues:true
 discard_file:stderr
+
+[collate_file]
+libpublish_yml:.github/workflows/libpublish.yml
+libtest_yml:.github/workflows/libtest.yml
+kitchen_yml:kitchen.yml
+publish_yml:.github/workflows/publish.yml
+test_yml:.github/workflows/test.yml
+pre-commit_yaml:.pre-commit-config.yaml
