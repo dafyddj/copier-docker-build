@@ -11,7 +11,7 @@ verifier:
 platforms:
   - name: test
     driver:
-      image: {{ image_namespace }}/{{ image_repo }}:local-test
+      image: dafyddj/repo:local-test
       platform: debian
 
 suites:

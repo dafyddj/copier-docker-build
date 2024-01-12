@@ -39,7 +39,7 @@ jobs:
     permissions:
       contents: write
     with:
-      image-namespace: namespace
-      image-repo: base-docker-build
+      image-namespace: dafyddj
+      image-repo: repo
     secrets:
       push-token: ${{ secrets.PUSH_TOKEN }}

@@ -40,6 +40,6 @@ jobs:
       contents: write
     with:
       image-namespace: {{ image_namespace }}
-      image-repo: {% raw %}${{ needs.gri.outputs.repo-id }}{% endraw %}
+      image-repo: {{ image_repo }}
     secrets:
       push-token: {% raw %}${{ secrets.PUSH_TOKEN }}{% endraw %}

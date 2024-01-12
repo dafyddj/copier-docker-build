@@ -1,1 +1,1 @@
---data image_namespace=namespace $TEXTTEST_ROOT/.. .
+-d image_namespace=namespace -d image_repo=base-docker-build $TEXTTEST_ROOT/.. .

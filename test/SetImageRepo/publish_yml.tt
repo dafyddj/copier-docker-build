@@ -23,8 +23,8 @@ jobs:
     permissions:
       packages: write
     with:
-      image-namespace: namespace
-      image-repo: base-docker-build
+      image-namespace: dafyddj
+      image-repo: repo
       labels: org.opencontainers.image.authors=AN Author <author@example.org>
     secrets:
       registry-password: ${{ secrets.GITHUB_TOKEN }}

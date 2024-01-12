@@ -5,3 +5,6 @@ _templates_suffix: .copier-jinja
 image_namespace:
   type: str
   help: What is your image namespace? (e.g. your registry username)
+image_repo:
+  type: str
+  help: What is your image repo name?
