@@ -1,3 +1,5 @@
 GenerateProject
+PublishToDockerHub
+PublishToGitLabRegistry
 SetImageRepo
 SetImageNamespace

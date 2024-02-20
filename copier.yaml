@@ -2,9 +2,19 @@ _subdirectory: template
 _templates_suffix: .copier-jinja
 
 # Questions
+container_registry:
+  type: str
+  help: To which container registry would you like to publish your images?
+  default: ghcr.io
 image_namespace:
   type: str
   help: What is your image namespace? (e.g. your registry username)
 image_repo:
   type: str
   help: What is your image repo name?
+
+# Computed values
+is_ghcr:
+  type: bool
+  when: false
+  default: '{{ container_registry == "ghcr.io" }}'

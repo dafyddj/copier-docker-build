@@ -1,0 +1,1 @@
+-d container_registry=docker.io -d image_namespace=dafyddj -d image_repo=base-docker-build $TEXTTEST_ROOT/.. .
