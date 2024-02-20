@@ -20,11 +20,16 @@ jobs:
     name: Run `publish` workflow
     needs: gri
     uses: ./.github/workflows/libpublish.yml
+    {% if is_ghcr -%}
     permissions:
       packages: write
+    {% endif -%}
     with:
+      {% if not is_ghcr -%}
+      docker-registry: {{ container_registry }}
+      {% endif -%}
       image-namespace: {{ image_namespace }}
       image-repo: {{ image_repo }}
       labels: org.opencontainers.image.authors=AN Author <author@example.org>
     secrets:
-      registry-password: {% raw %}${{ secrets.GITHUB_TOKEN }}{% endraw %}
+      registry-password: {{ "${{ secrets." ~ ("GITHUB_TOKEN" if is_ghcr else "REGISTRY_TOKEN") ~ " }}" }}
