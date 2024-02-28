@@ -22,3 +22,4 @@ jobs:
       labels: org.opencontainers.image.authors=AN Author <author@example.org>
     secrets:
       registry-password: {{ "${{ secrets." ~ ("GITHUB_TOKEN" if is_ghcr else "REGISTRY_TOKEN") ~ " }}" }}
+      registry-username: {{ "${{ " ~ ("github.repository_owner" if is_ghcr else "secrets.REGISTRY_USERNAME") ~ " }}" }}
