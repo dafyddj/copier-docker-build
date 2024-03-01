@@ -23,3 +23,16 @@ jobs:
     secrets:
       registry-password: {{ "${{ secrets." ~ ("GITHUB_TOKEN" if is_ghcr else "REGISTRY_TOKEN") ~ " }}" }}
       registry-username: {{ "${{ " ~ ("github.repository_owner" if is_ghcr else "secrets.REGISTRY_USERNAME") ~ " }}" }}
+  report:
+    name: Report success
+    needs:
+      - run-publish-workflow
+    runs-on: ubuntu-latest
+    steps:
+      - name: Update Healthchecks.io
+        run: |
+          if [ -n "${HC_UUID}" ]; then
+            curl -fsS -m 10 --retry 5 -o /dev/null "https://hc-ping.com/${HC_UUID}"
+          fi
+        env:
+          HC_UUID: {{ "${{ secrets.HC_UUID }}" }}
