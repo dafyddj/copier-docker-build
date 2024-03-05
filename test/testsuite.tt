@@ -3,3 +3,4 @@ PublishToDockerHub
 PublishToGitLabRegistry
 SetImageRepo
 SetImageNamespace
+SetImageAuthors

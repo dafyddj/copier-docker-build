@@ -19,7 +19,7 @@ jobs:
       {% endif -%}
       image-namespace: {{ image_namespace }}
       image-repo: {{ image_repo }}
-      labels: org.opencontainers.image.authors=AN Author <author@example.org>
+      labels: org.opencontainers.image.authors={{ image_authors }}
     secrets:
       registry-password: {{ "${{ secrets." ~ ("GITHUB_TOKEN" if is_ghcr else "REGISTRY_TOKEN") ~ " }}" }}
       registry-username: {{ "${{ " ~ ("github.repository_owner" if is_ghcr else "secrets.REGISTRY_USERNAME") ~ " }}" }}
