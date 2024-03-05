@@ -1,0 +1,1 @@
+-d image_namespace=dafyddj -d image_repo=base-docker-build -d image_authors=@example $TEXTTEST_ROOT/.. .

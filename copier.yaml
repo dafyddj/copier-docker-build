@@ -12,6 +12,10 @@ image_namespace:
 image_repo:
   type: str
   help: What is your image repo name?
+image_authors:
+  type: str
+  help: What value should the `authors` label contain?
+  default: AN Author <author@example.org>
 
 # Computed values
 is_ghcr:
