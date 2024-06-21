@@ -37,6 +37,7 @@
     {
       "matchManagers": ["custom.regex"],
       "commitMessageSuffix": "available",
+      "pinDigests": false,
     },
     {
       "matchManagers": ["custom.regex"],
