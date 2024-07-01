@@ -16,6 +16,7 @@ kitchen_yml:kitchen.yml
 publish_yml:.github/workflows/publish.yml
 test_yml:.github/workflows/test.yml
 pre-commit_yaml:.pre-commit-config.yaml
+renovate_json5:.github/renovate.json5
 
 [run_dependent_text]
 stderr:Copying from template version
