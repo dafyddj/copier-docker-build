@@ -5,6 +5,9 @@
     "git-submodules",
   ],
   "extends": [
+    ":automergeDigest",
+    ":automergeMinor",
+    ":semanticPrefixChore",
     "config:recommended",
   ],
   // `copier` template updates
@@ -25,11 +28,32 @@
       "datasourceTemplate": "github-tags",
       "autoReplaceStringTemplate": "_commit: {{#if currentDigest}}{{{currentDigest}}}{{else}}{{{currentValue}}}{{/if}} # __copier_update_available {{{newValue}}}\n_src_path: gh:{{{depName}}}\n",
     },
+    {
+      "customType": "regex",
+      "fileMatch": ["^\\.schedule-version$"],
+      "matchStrings": [
+        "(?<currentValue>\\S+)\\n"
+      ],
+      "datasourceTemplate": "github-tags",
+      "depNameTemplate": "my-org/copier-project",
+    },
   ],
   "git-submodules": {
     "enabled": true
   },
   "packageRules": [
+    {
+      "matchFiles": [".schedule-version"],
+      "extends": [
+        ":semanticPrefixFix",
+        "schedule:weekly",
+      ],
+      "commitMessageAction": "",
+      "commitMessageExtra": "({{prettyNewVersion}})",
+      "commitMessageTopic": "Scheduled update",
+      "minimumReleaseAge": "1 day",
+      "platformAutomerge": false,
+    },
     {
       "matchManagers": ["git-submodules"],
       "automerge": true,

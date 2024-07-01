@@ -1,0 +1,1 @@
+-d image_namespace=dafyddj -d image_repo=base-docker-build -d release_is_scheduled=true -d repo_name=copier-project -d repo_namespace=my-org $TEXTTEST_ROOT/.. .

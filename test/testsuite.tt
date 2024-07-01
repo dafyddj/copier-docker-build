@@ -4,3 +4,4 @@ PublishToGitLabRegistry
 SetImageRepo
 SetImageNamespace
 SetImageAuthors
+ScheduleARelease

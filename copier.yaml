@@ -16,6 +16,20 @@ image_authors:
   type: str
   help: What value should the `authors` label contain?
   default: AN Author <author@example.org>
+release_is_scheduled:
+  type: bool
+  help: Do you want to schedule a container release?
+  default: false
+
+# Conditional questions
+repo_name:
+  type: str
+  help: What is your GitHub repository name?
+  when: "{{ release_is_scheduled }}"
+repo_namespace:
+  type: str
+  help: What is your GitHub repository namespace?
+  when: "{{ release_is_scheduled }}"
 
 # Computed values
 is_ghcr:
