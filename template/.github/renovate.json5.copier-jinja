@@ -2,6 +2,9 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "enabledManagers": [
     "copier",
+{%- if release_is_scheduled %}
+    "custom.regex",
+{%- endif %}
     "git-submodules",
   ],
   "extends": [
@@ -31,7 +34,7 @@
   "packageRules": [
 {%- if release_is_scheduled %}
     {
-      "matchFiles": [".schedule-version"],
+      "matchFileNames": [".schedule-version"],
       "extends": [
         ":semanticPrefixFix",
         "schedule:weekly",
@@ -48,5 +51,4 @@
       "automerge": true,
     },
   ],
-  "platformAutomerge": false,
 }

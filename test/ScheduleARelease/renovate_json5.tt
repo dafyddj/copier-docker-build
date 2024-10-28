@@ -2,6 +2,7 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "enabledManagers": [
     "copier",
+    "custom.regex",
     "git-submodules",
   ],
   "extends": [
@@ -26,7 +27,7 @@
   },
   "packageRules": [
     {
-      "matchFiles": [".schedule-version"],
+      "matchFileNames": [".schedule-version"],
       "extends": [
         ":semanticPrefixFix",
         "schedule:weekly",
@@ -42,5 +43,4 @@
       "automerge": true,
     },
   ],
-  "platformAutomerge": false,
 }
