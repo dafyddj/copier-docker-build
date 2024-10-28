@@ -2,6 +2,9 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "enabledManagers": [
     "copier",
+{%- if release_is_scheduled %}
+    "custom.regex",
+{%- endif %}
     "git-submodules",
   ],
   "extends": [
