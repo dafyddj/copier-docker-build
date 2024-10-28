@@ -34,7 +34,7 @@
   "packageRules": [
 {%- if release_is_scheduled %}
     {
-      "matchFiles": [".schedule-version"],
+      "matchFileNames": [".schedule-version"],
       "extends": [
         ":semanticPrefixFix",
         "schedule:weekly",
