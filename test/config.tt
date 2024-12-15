@@ -10,6 +10,7 @@ full_name:copier-docker-build
 create_catalogues:true
 
 [collate_file]
+dummy_rb:test/integration/default/dummy.rb
 kitchen_yml:kitchen.yml
 libpublish_yml:.github/workflows/libpublish.yml
 libtest_yml:.github/workflows/libtest.yml
