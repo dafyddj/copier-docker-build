@@ -18,7 +18,7 @@ image_authors:
   default: AN Author <author@example.org>
 no_cache_filter:
   type: str
-  help: What is your `no-cache-filter`? (as a CSV)
+  help: What is your `no-cache-filter`? (CSV; leave empty for none)
   default: ''
 release_is_scheduled:
   type: bool
