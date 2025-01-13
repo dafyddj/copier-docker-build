@@ -20,6 +20,9 @@ jobs:
       image-namespace: {{ image_namespace }}
       image-repo: {{ image_repo }}
       labels: org.opencontainers.image.authors={{ image_authors }}
+      {%- if has_ncf %}
+      no-cache-filter: {{ no_cache_filter }}
+      {%- endif %}
     secrets:
       registry-password: {{ "${{ secrets." ~ ("GITHUB_TOKEN" if is_ghcr else "REGISTRY_TOKEN") ~ " }}" }}
       registry-username: {{ "${{ " ~ ("github.repository_owner" if is_ghcr else "secrets.REGISTRY_USERNAME") ~ " }}" }}

@@ -1,0 +1,19 @@
+The following new files/directories were created:
+<Test Directory>
+----.copier-answers.yml
+----.github
+--------renovate.json5
+--------settings.yml
+--------workflows
+------------libpublish.yml
+------------libtest.yml
+------------publish.yml
+------------test.yml
+----.gitignore
+----.pre-commit-config.yaml
+----Dockerfile
+----kitchen.yml
+----test
+--------integration
+------------default
+----------------dummy.rb
