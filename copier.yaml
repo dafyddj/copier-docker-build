@@ -16,6 +16,10 @@ image_authors:
   type: str
   help: What value should the `authors` label contain?
   default: AN Author <author@example.org>
+no_cache_filter:
+  type: str
+  help: What is your `no-cache-filter`? (CSV; leave empty for none)
+  default: ''
 release_is_scheduled:
   type: bool
   help: Do you want to schedule a container release?
@@ -32,6 +36,10 @@ repo_namespace:
   when: "{{ release_is_scheduled }}"
 
 # Computed values
+has_ncf:
+  type: bool
+  when: false
+  default: '{{ no_cache_filter != "" }}'
 is_ghcr:
   type: bool
   when: false

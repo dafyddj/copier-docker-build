@@ -1,0 +1,1 @@
+-d image_namespace=dafyddj -d image_repo=base-docker-build -d no_cache_filter=run $TEXTTEST_ROOT/.. .

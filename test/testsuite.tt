@@ -5,3 +5,4 @@ SetImageRepo
 SetImageNamespace
 SetImageAuthors
 ScheduleARelease
+SetNoCacheFilter
