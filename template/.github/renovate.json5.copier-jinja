@@ -1,54 +1,56 @@
 {
-  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "enabledManagers": [
-    "copier",
+  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+  enabledManagers: [
+    'copier',
 {%- if release_is_scheduled %}
-    "custom.regex",
+    'custom.regex',
 {%- endif %}
-    "git-submodules",
+    'git-submodules',
   ],
-  "extends": [
+  extends: [
 {%- if release_is_scheduled %}
-    ":automergeDigest",
-    ":automergeMinor",
-    ":semanticPrefixChore",
+    ':automergeDigest',
+    ':automergeMinor',
+    ':semanticPrefixChore',
 {%- endif %}
-    "config:recommended",
+    'config:recommended',
   ],
 {%- if release_is_scheduled %}
-  "customManagers": [
+  customManagers: [
     {
-      "customType": "regex",
-      "fileMatch": ["^\\.schedule-version$"],
-      "matchStrings": [
-        "(?<currentValue>\\S+)\\n"
+      customType: 'regex',
+      fileMatch: ['^\\.schedule-version$'],
+      matchStrings: [
+        '(?<currentValue>\\S+)\\n'
       ],
-      "datasourceTemplate": "github-tags",
-      "depNameTemplate": "{{ repo_namespace }}/{{ repo_name }}",
+      datasourceTemplate: 'github-tags',
+      depNameTemplate: '{{ repo_namespace }}/{{ repo_name }}',
     },
 {%- endif %}
   ],
-  "git-submodules": {
-    "enabled": true
+  'git-submodules': {
+    enabled: true
   },
-  "packageRules": [
+  packageRules: [
 {%- if release_is_scheduled %}
     {
-      "matchFileNames": [".schedule-version"],
-      "extends": [
-        ":semanticPrefixFix",
-        "schedule:weekly",
+      matchFileNames: ['.schedule-version'],
+      extends: [
+        ':semanticPrefixFix',
+        'schedule:weekly',
       ],
-      "commitMessageAction": "",
-      "commitMessageExtra": "({{ "{{prettyNewVersion}}" }})",
-      "commitMessageTopic": "Scheduled update",
-      "minimumReleaseAge": "1 day",
-      "platformAutomerge": false,
+      commitMessageAction: '',
+      commitMessageExtra: '({{ "{{prettyNewVersion}}" }})',
+      commitMessageTopic: 'Scheduled update',
+      minimumReleaseAge: '1 day',
+      platformAutomerge: false,
     },
 {%- endif %}
     {
-      "matchManagers": ["git-submodules"],
-      "automerge": true,
+      matchManagers: [
+        'git-submodules',
+      ],
+      automerge: true,
     },
   ],
 }
