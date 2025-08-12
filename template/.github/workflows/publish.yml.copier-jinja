@@ -8,12 +8,18 @@ on:
 jobs:
   run-publish-workflow:
     name: Run `publish` workflow
+    strategy:
+      fail-fast: false
+      matrix:
+        key:
+          - value
     uses: ./.github/workflows/libpublish.yml
     {% if is_ghcr -%}
     permissions:
       packages: write
     {% endif -%}
     with:
+      build-args: {{ "KEY=${{ matrix.key }}" }}
       {% if not is_ghcr -%}
       docker-registry: {{ container_registry }}
       {% endif -%}
