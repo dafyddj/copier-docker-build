@@ -40,14 +40,47 @@ jobs:
     name: Run `test` workflow
     needs:
       - pre-commit
+    strategy:
+      fail-fast: false
+      matrix:
+        key:
+          - value
     uses: ./.github/workflows/libtest.yml
-    permissions:
-      contents: write
     with:
+      build-args: {{ "KEY=${{ matrix.key }}" }}
       image-namespace: {{ image_namespace }}
       image-repo: {{ image_repo }}
       {%- if has_ncf %}
       no-cache-filter: {{ no_cache_filter }}
       {%- endif %}
-    secrets:
-      push-token: {% raw %}${{ secrets.PUSH_TOKEN }}{% endraw %}
+  results:
+    name: Collect results
+    permissions:
+      checks: read
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: poseidon/wait-for-status-checks@899c768d191b56eef585c18f8558da19e1f3e707 # v0.6.0
+        with:
+          ignore: Collect results
+          token: {{ "${{ secrets.GITHUB_TOKEN }}" }}
+      - run: echo "::notice ::Workflow success!"
+  release:
+    name: Release
+    needs:
+      - results
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        with:
+          persist-credentials: false    # Prevent credentials conflict when running `semantic-release`
+      - uses: codfish/semantic-release-action@b621d34fabe0940f031e89b6ebfea28322892a10 # v3.5.0
+        with:
+          plugins: |
+            [ "@semantic-release/commit-analyzer",
+              "@semantic-release/release-notes-generator",
+              "@semantic-release/github"
+            ]
+        env:
+          GITHUB_TOKEN: {{ "${{ secrets.PUSH_TOKEN }}" }}
