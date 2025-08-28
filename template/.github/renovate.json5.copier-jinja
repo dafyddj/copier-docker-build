@@ -5,15 +5,15 @@
 {%- if release_is_scheduled %}
     'custom.regex',
 {%- endif %}
-    'git-submodules',
   ],
   extends: [
+    'github>techneg-it/.github',
+    'github>techneg-it/.github:copier',
 {%- if release_is_scheduled %}
     ':automergeDigest',
     ':automergeMinor',
     ':semanticPrefixChore',
 {%- endif %}
-    'config:recommended',
   ],
 {%- if release_is_scheduled %}
   customManagers: [
@@ -30,9 +30,6 @@
     },
 {%- endif %}
   ],
-  'git-submodules': {
-    enabled: true,
-  },
   packageRules: [
 {%- if release_is_scheduled %}
     {
@@ -50,11 +47,5 @@
       platformAutomerge: false,
     },
 {%- endif %}
-    {
-      matchManagers: [
-        'git-submodules',
-      ],
-      automerge: true,
-    },
   ],
 }

@@ -3,13 +3,13 @@
   enabledManagers: [
     'copier',
     'custom.regex',
-    'git-submodules',
   ],
   extends: [
+    'github>techneg-it/.github',
+    'github>techneg-it/.github:copier',
     ':automergeDigest',
     ':automergeMinor',
     ':semanticPrefixChore',
-    'config:recommended',
   ],
   customManagers: [
     {
@@ -24,9 +24,6 @@
       depNameTemplate: 'my-org/copier-project',
     },
   ],
-  'git-submodules': {
-    enabled: true,
-  },
   packageRules: [
     {
       matchFileNames: [
@@ -41,12 +38,6 @@
       commitMessageTopic: 'Scheduled update',
       minimumReleaseAge: '1 day',
       platformAutomerge: false,
-    },
-    {
-      matchManagers: [
-        'git-submodules',
-      ],
-      automerge: true,
     },
   ],
 }
