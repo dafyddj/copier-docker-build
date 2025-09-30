@@ -1,20 +1,29 @@
 {
   $schema: 'https://docs.renovatebot.com/renovate-schema.json',
-  enabledManagers: [
-    'copier',
-{%- if release_is_scheduled %}
-    'custom.regex',
-{%- endif %}
-  ],
   extends: [
     'github>techneg-it/.github',
-    'github>techneg-it/.github:copier',
+    'github>techneg-it/.github:check-jsonschema',
+    'github>techneg-it/.github:copier-new',
+    'github>techneg-it/.github:github-actions',
+    'github>techneg-it/.github:pre-commit',
+    'github>techneg-it/.github:python-versions',
+    'github>techneg-it/.github:weekly',
 {%- if release_is_scheduled %}
     ':automergeDigest',
     ':automergeMinor',
     ':semanticPrefixChore',
+{%- else %}
+    ':automergeStableNonMajor',
 {%- endif %}
   ],
+  customDatasources: {
+    omnitruck: {
+      defaultRegistryUrlTemplate: 'https://omnitruck.chef.io/stable/{{ "{{packageName}}" }}/versions/latest',
+      transformTemplates: [
+        '{"releases": [{ "version": $string($) }] }',
+      ],
+    },
+  },
 {%- if release_is_scheduled %}
   customManagers: [
     {
@@ -28,9 +37,15 @@
       datasourceTemplate: 'github-tags',
       depNameTemplate: '{{ repo_namespace }}/{{ repo_name }}',
     },
-{%- endif %}
   ],
+{%- endif %}
   packageRules: [
+    {
+      matchPackageNames: [
+        'AleksaC/hadolint-py',
+      ],
+      versioning: 'loose',
+    },
 {%- if release_is_scheduled %}
     {
       matchFileNames: [

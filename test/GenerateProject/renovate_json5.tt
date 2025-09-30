@@ -1,13 +1,1 @@
-{
-  $schema: 'https://docs.renovatebot.com/renovate-schema.json',
-  enabledManagers: [
-    'copier',
-  ],
-  extends: [
-    'github>techneg-it/.github',
-    'github>techneg-it/.github:copier',
-  ],
-  ],
-  packageRules: [
-  ],
-}
+../../base/.github/renovate.json5
