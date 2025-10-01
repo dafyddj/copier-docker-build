@@ -17,6 +17,7 @@ libtest_yml:.github/workflows/libtest.yml
 pre-commit_yaml:.pre-commit-config.yaml
 publish_yml:.github/workflows/publish.yml
 renovate_json5:.github/renovate.json5
+settings_yml:.github/settings.yml
 test_yml:.github/workflows/test.yml
 
 [run_dependent_text]
