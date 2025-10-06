@@ -8,13 +8,9 @@
     'github>techneg-it/.github:pre-commit',
     'github>techneg-it/.github:python-versions',
     'github>techneg-it/.github:weekly',
-{%- if release_is_scheduled %}
     ':automergeDigest',
-    ':automergeMinor',
-    ':semanticPrefixChore',
-{%- else %}
     ':automergeStableNonMajor',
-{%- endif %}
+    'customManagers:dockerfileVersions',
   ],
   customDatasources: {
     omnitruck: {
