@@ -25,6 +25,7 @@ libpublish_yml:(-? uses: [\w-]+\/[.\w-]+)@.+${REPLACE \1@version}
 libtest_yml:([A-Za-z0-9_]+?_VERSION:) \S+{REPLACE \1 version}
 libtest_yml:(-? uses: [\w-]+\/[.\w-]+)@.+${REPLACE \1@version}
 pre-commit_yaml:(rev:) \S+{REPLACE \1 version}
+test_yml:([A-Za-z0-9_]+?-version:) \S+{REPLACE \1 version}
 test_yml:(-? uses: [\w-]+\/[.\w-]+)@.+${REPLACE \1@version}
 stderr:Copying from template version
 stderr:DirtyLocalWarning{LINES 2}
