@@ -13,6 +13,8 @@ The following new files/directories were created:
 ----.pre-commit-config.yaml
 ----.schedule-version
 ----Dockerfile
+----Gemfile
+----Gemfile.lock
 ----kitchen.yml
 ----test
 --------integration
