@@ -24,11 +24,15 @@ test_yml:.github/workflows/test.yml
 
 [run_dependent_text]
 libpublish_yml:(-? uses: [\w-]+\/[.\w-]+)@.+${REPLACE \1@version}
+libpublish_yml:(runs-on: ubuntu-)[\d]{2}\.[\d]{2}${REPLACE \1version}
 libtest_yml:([A-Za-z0-9_]+?_VERSION:) \S+{REPLACE \1 version}
 libtest_yml:(-? uses: [\w-]+\/[.\w-]+)@.+${REPLACE \1@version}
+libtest_yml:(runs-on: ubuntu-)[\d]{2}\.[\d]{2}${REPLACE \1version}
 pre-commit_yaml:(rev:) \S+{REPLACE \1 version}
+publish_yml:(runs-on: ubuntu-)[\d]{2}\.[\d]{2}${REPLACE \1version}
 test_yml:([A-Za-z0-9_]+?-version:) \S+{REPLACE \1 version}
 test_yml:(-? uses: [\w-]+\/[.\w-]+)@.+${REPLACE \1@version}
+test_yml:(runs-on: ubuntu-)[\d]{2}\.[\d]{2}${REPLACE \1version}
 stderr:Copying from template version
 stderr:DirtyLocalWarning{LINES 2}
 stderr:No git tags found in template; using HEAD as ref
